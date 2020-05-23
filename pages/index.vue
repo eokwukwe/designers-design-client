@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Homepage</h2>
+    {{ $auth.user }}
   </div>
 </template>
 
