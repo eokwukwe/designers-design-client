@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 export default {
   mode: 'universal',
   /*
@@ -53,24 +55,24 @@ export default {
     'bootstrap-vue/nuxt',
     '@nuxtjs/auth',
     '@nuxtjs/axios',
-    '@nuxtjs/dotenv',
+    '@nuxtjs/dotenv'
   ],
 
   auth: {
-  strategies: {
-    local: {
-      endpoints: {
-        login: { url: '/login', method: 'post', propertyName: 'token' },
-        logout: { url: '/logout', method: 'post' },
-        user: { url: '/me', method: 'get', propertyName: 'data' }
-      },
-      // tokenRequired: true,
-      // tokenType: 'bearer',
-      // globalToken: true,
-      // autoFetchUser: true
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/login', method: 'post', propertyName: 'token' },
+          logout: { url: '/logout', method: 'post' },
+          user: { url: '/me', method: 'get', propertyName: 'data' }
+        }
+        // tokenRequired: true,
+        // tokenType: 'bearer',
+        // globalToken: true,
+        // autoFetchUser: true
+      }
     }
-  }
-},
+  },
 
   /*
    ** Axios module configuration
