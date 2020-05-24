@@ -66,7 +66,7 @@
         <!-- End Before Login -->
       </template>
 
-        <!-- After Login -->
+      <!-- After Login -->
       <template v-else>
         <ul class="author-page white-path">
           <!-- Profile Dropdown -->
@@ -109,9 +109,9 @@
                 Setting
               </a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#" title="Sign Out">
+              <a class="dropdown-item" @click.prevent="logout">
                 <i class="fa fa-lock"></i>
-                Sign Out
+                Log Out
               </a>
             </div>
           </li>
@@ -124,7 +124,13 @@
 </template>
 
 <script>
-export default {}
+export default {
+  methods: {
+    logout() {
+      this.$auth.logout()
+    }
+  }
+}
 </script>
 
 <style></style>
