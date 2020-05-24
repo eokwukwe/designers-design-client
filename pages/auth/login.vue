@@ -2,7 +2,7 @@
   <!-- Section Cards -->
   <section class="authentication">
     <div class="auth-body">
-      <h1 class="text-uppercase fw-500 mb-4 text-center font-22">
+      <h1 class="text-uppercase fw-600 mb-4 text-center font-22">
         Login
       </h1>
       <form class="auth-form" @submit.prevent="submit">
@@ -42,9 +42,9 @@
         </div>
 
         <div class="mt-4 mb-4 clearfix">
-          <a class="forgot-pass color-blue font-14 fw-400" href="#">
+          <nuxt-link :to="{name: 'password.email'}" class="forgot-pass color-blue font-14 fw-400" href="#">
             Forgot password?
-          </a>
+          </nuxt-link>
         </div>
 
         <div class="text-right">

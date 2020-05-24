@@ -2,7 +2,7 @@
   <!-- Section Cards -->
   <section class="authentication">
     <div class="auth-body">
-      <h1 class="text-uppercase fw-500 mb-4 text-center font-22">Register</h1>
+      <h1 class="text-uppercase fw-600 mb-4 text-center font-22">Register</h1>
       <form class="auth-form" @submit.prevent="submit">
         <alert-success :form="registerForm">
           Registration successful. Please, check your email to verify your

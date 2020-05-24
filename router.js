@@ -19,6 +19,12 @@ const routes = [
     name: 'verification.resend',
     component: page('auth/verification/resend.vue')
   }
+  ,
+  {
+    path: '/password/email',
+    name: 'password.email',
+    component: page('auth/password/reset-email.vue')
+  }
 ]
 
 export function createRouter() {
