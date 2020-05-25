@@ -15,15 +15,13 @@
         </alert-success>
 
         <div class="form-group">
-          <input
-            type="text"
+          <base-input
             v-model.trim="resendForm.email"
-            name="email"
-            class="form-control form-control-lg font-14 fw-300"
-            :class="{ 'is-invalid': resendForm.errors.has('email') }"
+            type="email"
             placeholder="Email"
-          />
-          <has-error :form="resendForm" field="email"></has-error>
+            :form="resendForm"
+            field="email"
+          ></base-input>
         </div>
 
         <div class="text-right">

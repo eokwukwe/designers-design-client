@@ -8,7 +8,7 @@
         <alert-success :form="passwordResetForm">
           {{ status }}
           <p>
-            <nuxt-link :to="{name: 'login'}">Proceed to Login</nuxt-link>
+            <nuxt-link :to="{ name: 'login' }">Proceed to Login</nuxt-link>
           </p>
         </alert-success>
 
@@ -17,28 +17,24 @@
         </alert-error>
 
         <div class="form-group">
-          <input
-            type="email"
+          <base-input
             v-model.trim="passwordResetForm.email"
-            name="email"
-            readonly
-            :class="{ 'is-invalid': passwordResetForm.errors.has('email') }"
-            class="form-control form-control-lg font-14 fw-300"
+            type="email"
             placeholder="Email"
-          />
-          <has-error :form="passwordResetForm" field="email"></has-error>
+            :form="passwordResetForm"
+            field="email"
+            :readonly="true"
+          ></base-input>
         </div>
 
         <div class="form-group">
-          <input
-            type="password"
+           <base-input
             v-model.trim="passwordResetForm.password"
-            name="password"
-            class="form-control form-control-lg font-14 fw-300"
-            :class="{ 'is-invalid': passwordResetForm.errors.has('password') }"
+            type="password"
             placeholder="Password"
-          />
-          <has-error :form="passwordResetForm" field="password"></has-error>
+            :form="passwordResetForm"
+            field="password"
+          ></base-input>
         </div>
 
         <div class="form-group">

@@ -18,27 +18,23 @@
         </alert-error>
 
         <div class="form-group">
-          <input
-            type="text"
+          <base-input
             v-model.trim="loginForm.email"
-            name="email"
-            class="form-control form-control-lg font-14 fw-300"
-            :class="{ 'is-invalid': loginForm.errors.has('email') }"
+            type="email"
             placeholder="Email"
-          />
-          <has-error :form="loginForm" field="email"></has-error>
+            :form="loginForm"
+            field="email"
+          ></base-input>
         </div>
 
         <div class="form-group">
-          <input
-            type="password"
+          <base-input
             v-model.trim="loginForm.password"
-            name="password"
-            class="form-control form-control-lg font-14 fw-300"
-            :class="{ 'is-invalid': loginForm.errors.has('password') }"
+            type="password"
             placeholder="Password"
-          />
-          <has-error :form="loginForm" field="password"></has-error>
+            :form="loginForm"
+            field="password"
+          ></base-input>
         </div>
 
         <div class="mt-4 mb-4 clearfix">

@@ -9,51 +9,43 @@
           account
         </alert-success>
         <div class="form-group">
-          <input
-            type="text"
+          <base-input
             v-model.trim="registerForm.name"
-            name="name"
-            class="form-control form-control-lg font-14 fw-300"
-            :class="{ 'is-invalid': registerForm.errors.has('name') }"
+            type="text"
             placeholder="Full Name (Firstname Lastname)"
-          />
-          <has-error :form="registerForm" field="name"></has-error>
+            :form="registerForm"
+            field="name"
+          ></base-input>
         </div>
 
         <div class="form-group">
-          <input
-            type="text"
+          <base-input
             v-model.trim="registerForm.username"
-            name="username"
-            class="form-control form-control-lg font-14 fw-300"
-            :class="{ 'is-invalid': registerForm.errors.has('username') }"
-            placeholder="Username"
-          />
-          <has-error :form="registerForm" field="username"></has-error>
-        </div>
-
-        <div class="form-group">
-          <input
             type="text"
-            v-model.trim="registerForm.email"
-            name="email"
-            class="form-control form-control-lg font-14 fw-300"
-            :class="{ 'is-invalid': registerForm.errors.has('email') }"
-            placeholder="Email"
-          />
-          <has-error :form="registerForm" field="email"></has-error>
+            placeholder="Username"
+            :form="registerForm"
+            field="username"
+          ></base-input>
         </div>
 
         <div class="form-group">
-          <input
-            type="password"
+          <base-input
+            v-model.trim="registerForm.email"
+            type="email"
+            placeholder="Email"
+            :form="registerForm"
+            field="email"
+          ></base-input>
+        </div>
+
+        <div class="form-group">
+          <base-input
             v-model.trim="registerForm.password"
-            name="password"
-            class="form-control form-control-lg font-14 fw-300"
-            :class="{ 'is-invalid': registerForm.errors.has('password') }"
+            type="password"
             placeholder="Password"
-          />
-          <has-error :form="registerForm" field="password"></has-error>
+            :form="registerForm"
+            field="password"
+          ></base-input>
         </div>
 
         <div class="form-group">
