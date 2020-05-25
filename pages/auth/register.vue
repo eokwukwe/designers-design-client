@@ -77,6 +77,8 @@
 
 <script>
 export default {
+  middleware: ['guest'],
+
   data() {
     return {
       registerForm: this.$vform({

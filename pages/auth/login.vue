@@ -67,6 +67,8 @@
 
 <script>
 export default {
+  middleware: ['guest'],
+
   data() {
     return {
       loginForm: this.$vform({

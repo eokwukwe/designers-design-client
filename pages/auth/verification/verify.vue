@@ -27,6 +27,8 @@
 
 <script>
 export default {
+  middleware: ['guest'],
+  
   async asyncData({ params, query, app }) {
     // build a query string
     const q = Object.keys(query)
