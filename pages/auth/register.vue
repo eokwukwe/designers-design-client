@@ -67,16 +67,9 @@
         </div>
 
         <div class="text-right">
-          <button
-            type="submit"
-            :disabled="registerForm.busy"
-            class="btn btn-primary primary-bg-color font-16 fw-500 text-uppercase"
-          >
-            <span v-if="registerForm.busy">
-              <i class="fas fa-spinner fa-spin"></i>
-            </span>
+          <base-button :block="true">
             Register
-          </button>
+          </base-button>
         </div>
         <p class="font-14 fw-400 text-center mt-4">
           Already have an account?

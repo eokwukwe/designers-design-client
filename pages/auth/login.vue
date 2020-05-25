@@ -42,23 +42,19 @@
         </div>
 
         <div class="mt-4 mb-4 clearfix">
-          <nuxt-link :to="{name: 'password.email'}" class="forgot-pass color-blue font-14 fw-400" href="#">
+          <nuxt-link
+            :to="{ name: 'password.email' }"
+            class="forgot-pass color-blue font-14 fw-400"
+            href="#"
+          >
             Forgot password?
           </nuxt-link>
         </div>
 
         <div class="text-right">
-          <base-button></base-button>
-          <!-- <button
-            type="submit"
-            :disabled="loginForm.busy"
-            class="btn btn-primary primary-bg-color font-16 fw-500 text-uppercase"
-          >
-            <span v-if="loginForm.busy">
-              <i class="fas fa-spinner fa-spin"></i>
-            </span>
+          <base-button :block="true" :loading="loginForm.busy">
             Login
-          </button> -->
+          </base-button>
         </div>
 
         <p class="font-14 fw-400 text-center mt-4">
