@@ -180,7 +180,7 @@ export default {
         .put(`/designs/${this.$route.params.id}`)
         .then((res) => {
           setTimeout(() => {
-            this.$router.push({ name: 'settings.designs' })
+            this.$router.push({ name: 'settings.dashboard' })
           }, 1000)
         })
         .catch((err) => console.log(err.response))
