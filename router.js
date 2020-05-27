@@ -53,7 +53,12 @@ const routes = [
         path: 'profile',
         name: 'settings.profile',
         component: page('user/settings/profile.vue')
-      }
+      },
+      {
+        path: 'designs',
+        name: 'settings.designs',
+        component: page('user/settings/designs.vue')
+      },
     ]
   }
 ]

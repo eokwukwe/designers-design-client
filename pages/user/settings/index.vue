@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <!-- LEFT -->
-        <div class="col-sm-3" id="myScrollspy">
+        <div class="col-md-3" id="myScrollspy">
           <div class="list-group">
             <nuxt-link
               v-for="link in links"
@@ -17,7 +17,7 @@
         </div>
 
         <!-- RIGHT -->
-        <div class="col-sm-9">
+        <div class="col-md-9">
           <router-view></router-view>
         </div>
         <!-- END RIGHT -->
@@ -29,6 +29,8 @@
 
 <script>
 export default {
+  middleware: ['auth'],
+
   data() {
     return {
       links: [
@@ -39,7 +41,11 @@ export default {
         {
           title: 'Update Profile',
           route: 'settings.profile'
-        }
+        },
+        {
+          title: 'Designs',
+          route: 'settings.designs'
+        },
       ]
     }
   }
