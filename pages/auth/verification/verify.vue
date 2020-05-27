@@ -28,7 +28,7 @@
 <script>
 export default {
   middleware: ['guest'],
-  
+
   async asyncData({ params, query, app }) {
     // build a query string
     const q = Object.keys(query)
@@ -41,8 +41,6 @@ export default {
       )
       return { success: true, status: data.message }
     } catch (error) {
-      console.log(error.response.data)
-
       return { success: false, status: error.response.data.error.message }
     }
   }

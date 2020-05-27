@@ -59,7 +59,7 @@
         </div>
 
         <div class="text-right">
-          <base-button :block="true">
+          <base-button :block="true" :loading="registerForm.busy">
             Register
           </base-button>
         </div>
