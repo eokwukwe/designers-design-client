@@ -136,6 +136,7 @@
 
 <script>
 import BetterInputTag from 'better-vue-input-tag'
+
 export default {
   middleware: ['auth'],
 

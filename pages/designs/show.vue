@@ -80,90 +80,64 @@
                   <!-- Designer info -->
                   <div class="modal-user-meta white-bg-color">
                     <a class="float-left" href="#" title="Neba">
-                      <img src="~assets/images/profile.png" alt="Neba" />
+                      <img :src="design.user.photo_url" alt="User image" />
                     </a>
                     <div class="modal-user-detail">
-                      <h1 class="font-13 fw-500">
+                      <h1
+                        class="font-13 fw-500 font-weight-bold text-capitalize"
+                      >
                         <a href="#">
-                          John Doe
+                          {{ design.user.name }}
                         </a>
                       </h1>
-                      <p class="font-12 fw-300 mt-1">
-                        <span class="shot-by">Sr. UI Designer</span>
+                      <p class="font-12 fw-300 mt-2 text-capitalize">
+                        <span class="shot-by">{{ design.user.tagline }}</span>
                       </p>
                       <p class="font-12 fw-300  mt-1">
-                        13 days ago
+                        {{ design.created_dates.created_at_human }}
                       </p>
                     </div>
                   </div>
                   <!-- End Designer info -->
+
                   <!-- Designer Design Info -->
                   <ul class="details-side-meta font-14 fw-400">
-                    <li class="d-table w-100">
-                      <div class="stats-txt d-table-cell w-50">
-                        <a href="#">
-                          <span>
-                            <i class="fa fa-heart"></i>
-                          </span>
-                          Like
-                        </a>
-                      </div>
-                      <div class="stats-num d-table-cell w-50 text-right">
-                        <a href="#">100 Likes</a>
-                      </div>
-                    </li>
+                    <DesignLike :design="design"></DesignLike>
 
                     <li class="d-table w-100">
-                      <div class="stats-txt d-table-cell w-100">
-                        <a href="#">
-                          More from John Doe
-                        </a>
+                      <div class="stats-txt d-table-cell w-100 text-capitalize">
+                        <a href="#"> More from {{ design.user.name }} </a>
                       </div>
                     </li>
                   </ul>
                   <!-- End Designer Design Info -->
+
                   <!-- Designer More Designs -->
                   <div class="more-designs-outer pb-3">
                     <ul class="more-designs row">
-                      <li class="col-md-6">
-                        <a href="#">
+                      <li
+                        class="col-md-6"
+                        v-for="designerDesign in designerDesigns"
+                        :key="designerDesign.id"
+                      >
+                        <nuxt-link
+                          :to="{
+                            name: 'designs.show',
+                            params: { slug: designerDesign.slug }
+                          }"
+                          href="#"
+                        >
                           <img
                             class="w-100"
-                            src="~assets/images/among_trees_night_dribbble.png"
-                            alt="Image"
+                            :src="designerDesign.images.thumbnail"
+                            alt="Design"
                           />
-                        </a>
-                      </li>
-                      <li class="col-md-6">
-                        <a href="#">
-                          <img
-                            class="w-100"
-                            src="~assets/images/among_trees_night_dribbble.png"
-                            alt="Image"
-                          />
-                        </a>
-                      </li>
-                      <li class="col-md-6">
-                        <a href="#">
-                          <img
-                            class="w-100"
-                            src="~assets/images/among_trees_night_dribbble.png"
-                            alt="Image"
-                          />
-                        </a>
-                      </li>
-                      <li class="col-md-6">
-                        <a href="#">
-                          <img
-                            class="w-100"
-                            src="~assets/images/among_trees_night_dribbble.png"
-                            alt="Image"
-                          />
-                        </a>
+                        </nuxt-link>
                       </li>
                     </ul>
                   </div>
                   <!-- End Designer More Designs -->
+
                   <!-- Designs Tags -->
                   <div class="designs-tag-outer mt-3">
                     <h2 class="font-16 fw-500 mb-2">
@@ -195,9 +169,12 @@
 
 <script>
 import DesignComment from '@/components/DesignComment'
+import DesignLike from '@/components/DesignLike'
+
 export default {
   components: {
-    DesignComment
+    DesignComment,
+    DesignLike
   },
 
   data() {
@@ -213,7 +190,17 @@ export default {
   async asyncData({ $axios, params }) {
     try {
       const response = await $axios.$get(`/designs/slug/${params.slug}`)
-      return { design: response.data, comments: response.data.comments }
+      const designerId = response.data.user.id
+      const designerOtherDesigns = await $axios.$get(
+        `/users/${designerId}/designs`
+      )
+      return {
+        design: response.data,
+        comments: response.data.comments,
+        designerDesigns: designerOtherDesigns.data.filter(
+          (d) => d.id !== response.data.id
+        )
+      }
     } catch (e) {
       if (e.response.status === 404) {
         error({ statusCode: 404, message: 'Design not found' })

@@ -59,3 +59,34 @@ export default {
 
 <style>
 </style>
+
+ props: {
+    design: {
+      type: Object,
+      required: true
+    }
+  },
+
+  data() {
+    return {
+      current_user_likes: false,
+      total_likes: 0
+    }
+  },
+
+  methods: {
+    likeDesign() {
+      this.$axios.post(`/designs/${this.design.id}/likes`).then((res) => {
+        this.current_user_likes = !this.current_user_likes
+        this.total_likes = res.data.total
+      })
+    }
+  },
+
+  created() {
+    this.total_likes = this.design.likes_count
+
+    this.$axios.$get(`/designs/${this.design.id}/liked`).then((res) => {
+      this.current_user_likes = res.liked
+    })
+  }
