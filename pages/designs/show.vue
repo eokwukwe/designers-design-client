@@ -143,16 +143,18 @@
                     <h2 class="font-16 fw-500 mb-2">
                       Tags
                     </h2>
-                    <div class="designs-tag font-14 fw-300">
-                      <a href="#" title="3D">3D</a>
-                      <a href="#" title="among trees">among trees</a>
-                      <a href="#" title="birds">birds</a>
-                      <a href="#" title="environment">environment</a>
-                      <a href="#" title="forest">forest</a>
-                      <a href="#" title="night">night</a>
-                      <a href="#" title="stylized">stylized</a>
-                      <a href="#" title="sunset">sunset</a>
-                      <a href="#" title="survival">survival</a>
+                    <div
+                      class="designs-tag font-14 fw-300"
+                      v-if="design.tag_list"
+                    >
+                      <a
+                        class="badge badge-info my-md-1"
+                        v-for="(tag, i) in design.tag_list.tags"
+                        :key="`tag-${i}`"
+                        :href="`/tags/${design.tag_list.normalized}`"
+                      >
+                        {{ tag }}
+                      </a>
                     </div>
                   </div>
                   <!-- End Designs Tags -->
