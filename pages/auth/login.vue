@@ -48,7 +48,7 @@
         </div>
 
         <div class="text-right">
-          <base-button :block="true" :loading="loginForm.busy">
+          <base-button :block="true" :loading="loading">
             Login
           </base-button>
         </div>
@@ -71,6 +71,7 @@ export default {
 
   data() {
     return {
+      loading: false,
       loginForm: this.$vform({
         email: '',
         password: ''
@@ -80,19 +81,22 @@ export default {
 
   methods: {
     submit() {
+      this.loading = true
       // using nuxt/auth module
       this.$auth
         .loginWith('local', {
           data: this.loginForm
         })
         .then((res) => {
-          console.log(res)
+          this.loginForm.reset();
+          // console.log(res)
         })
         .catch((error) => {
           // Bescause we're using the auth module, we need to set the error
           // on the form manually
           this.loginForm.errors.set(error.response.data.errors)
         })
+        .finally(() => (this.loading = false))
     }
   }
 }
